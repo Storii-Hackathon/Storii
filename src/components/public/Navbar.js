@@ -49,7 +49,8 @@ const Navbar = ({ isLoggedIn, onSignOut }) => {
 
           </>
         ) : (
-          <li><button onClick={onSignOut}>Sign Out</button></li>
+
+          <button className="cursor-pointer p-2 mr-[100px] w-[83px] flex items-center justify-center border-none bg-white" onClick={onSignOut}>Sign Out</button>
         )}
 
 

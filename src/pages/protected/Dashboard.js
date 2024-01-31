@@ -18,12 +18,12 @@ const Dashboard = () => {
       />
       <main className="w-[1049px] flex flex-col items-start justify-start pt-[55px] px-0 pb-0 box-border max-w-full mq800:pt-[23px] mq800:box-border mq1125:pt-9 mq1125:box-border">
         <section className="self-stretch flex flex-col items-center justify-start gap-[116px] max-w-full mq800:gap-[29px] mq1125:gap-[58px]">
-          <div className="self-stretch h-[402px] relative rounded-t-none rounded-br-[80px] rounded-bl-none shrink-0 flex items-center justify-center">
+        <div className="self-stretch h-[406px] relative rounded-tl-none rounded-tr-[106px] rounded-b-none shrink-0 flex items-center justify-center">
             <img
-              className="self-stretch h-full max-w-full overflow-hidden shrink-0 object-contain absolute left-[0px] top-[4px] w-full [transform:scale(1.05)]"
+              className="self-stretch h-full max-w-full overflow-hidden shrink-0 object-contain absolute left-[0px] top-[4px] w-full [transform:scale(1.049)]"
               loading="eager"
               alt=""
-              src="/placeholder-image@2x.png"
+              src="/placeholder-image@3x.png"
             />
           </div>
           <div className="w-[1007px] flex flex-row items-start justify-start py-0 pr-10 pl-5 box-border max-w-full">

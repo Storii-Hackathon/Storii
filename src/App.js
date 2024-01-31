@@ -104,7 +104,7 @@ function App() {
       }
     }
   }, [pathname]);
-  const noNavbarRoutes = ['/dashboard', '/generate-book', '/generate-book-2', '/story-nav', '/login', '/register'];
+  const noNavbarRoutes = ['/dashboard', '/generate-book-1', '/generate-book-2', '/story-nav', '/login', '/register'];
 
   return (
 <>
@@ -114,14 +114,22 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      {/* <Route path="/generate-book-1" element={<GenerateBook1 />} /> */}
       <Route path="/generate-book-2" element={<GenerateBook />} />
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/products" element={<Products />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/story-nav" element={<StoryNav />} />
-      <Route path="/generate-book-1" element={<GenerateBook1 />} />
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
+        {isLoggedIn && (
+          <Route
+            path="/generate-book-1"
+            element={<GenerateBook1/>}
+          />
+        )}
+
+
     </Routes>
     </>
   );

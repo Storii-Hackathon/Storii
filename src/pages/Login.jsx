@@ -1,56 +1,24 @@
 import React, { useState } from "react";
 import axios from 'axios'; // Ensure axios is imported
+import GroupComponent from "./LoginPage";
 
 const Login = ({ onLogin }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // Add this line for error handling
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    
-    try {
-      const response = await axios.post('http://localhost:5000/login', {
-        username,
-        password
-      });
-
-      if (response.status === 200) {
-        // const username = response.data.username;
-        onLogin(true, username);
-        console.log(username)
-        setError(""); // Clear any existing errors on successful login
-      }
-    } catch (err) {
-      if (err.response) {
-        setError(err.response.data.message);
-      } else {
-        setError("Login failed. Please try again.");
-      }
-      onLogin(false);
-    }
-  };
-
+  
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error messages */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="w-full relative bg-white overflow-hidden flex flex-row items-start justify-between pl-[257px] box-border gap-[20px] tracking-[normal] mq900:pl-16 mq900:box-border mq1275:pl-32 mq1275:box-border mq1600:flex-wrap">
+    <div className="w-[505px] flex flex-col items-start justify-start pt-[141px] px-0 pb-0 box-border min-w-[505px] max-w-full mq900:pt-[60px] mq900:box-border mq900:min-w-full mq1275:pt-[92px] mq1275:box-border mq1600:flex-1">
+      <div className="self-stretch flex flex-row items-center justify-center max-w-full">
+        <GroupComponent onLogin={onLogin}/>
+      </div>
     </div>
+    <img
+      className="h-screen w-[811px] relative rounded-tl-[56.25px] rounded-tr-none rounded-br-none rounded-bl-[56.25px] object-cover max-w-full"
+      loading="eager"
+      alt=""
+      src="/chrislee70l1tdai6rmunsplash-1@2x.png"
+    />
+  </div>
   );
 };
 

@@ -18,6 +18,8 @@ import "./global.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/public/Navbar";
+import SubscriptionPage from "./pages/protected/SubscriptionPage";
+import PaymentPage from "./pages/protected/PaymentPage"; // Import the PaymentPage
 function App() {
   const action = useNavigationType();
   const location = useLocation();
@@ -43,8 +45,6 @@ function App() {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("username"); // Remove the username from localStorage
   };
-
-
 
   useEffect(() => {
     if (action !== "POP") {
@@ -104,33 +104,47 @@ function App() {
       }
     }
   }, [pathname]);
-  const noNavbarRoutes = ['/dashboard', '/generate-book-1', '/generate-book-2', '/story-nav', '/login', '/register'];
+  const noNavbarRoutes = [
+    "/dashboard",
+    "/generate-book-1",
+    "/generate-book-2",
+    "/story-nav",
+    "/login",
+    "/register",
+    "/payment",
+  ];
 
   return (
-<>
-{!noNavbarRoutes.includes(location.pathname) && (
-    <Navbar isLoggedIn={isLoggedIn} onSignOut={handleSignOut} />
-  )}
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      {/* <Route path="/generate-book-1" element={<GenerateBook1 />} /> */}
-      <Route path="/generate-book-2" element={<GenerateBook />} />
-      <Route path="/pricing" element={<Pricing />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/about-us" element={<AboutUs />} />
-      <Route path="/story-nav" element={<StoryNav />} />
-      <Route path="/login" element={<Login onLogin={handleLogin} />} />
+    <>
+      {!noNavbarRoutes.includes(location.pathname) && (
+        <Navbar isLoggedIn={isLoggedIn} onSignOut={handleSignOut} />
+      )}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/generate-book-1" element={<GenerateBook1 />} /> */}
+        <Route path="/generate-book-2" element={<GenerateBook />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/story-nav" element={<StoryNav />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
         {isLoggedIn && (
-          <Route
-            path="/generate-book-1"
-            element={<GenerateBook1/>}
-          />
+          <Route path="/generate-book-1" element={<GenerateBook1 />} />
         )}
 
-
-    </Routes>
+        {isLoggedIn && (
+          <Route
+            path="/subscriptions"
+            element={<SubscriptionPage username={username} />}
+          />
+        )}
+        <Route
+          path="/payment"
+          element={<PaymentPage isLoggedIn={isLoggedIn} />}
+        />
+      </Routes>
     </>
   );
 }

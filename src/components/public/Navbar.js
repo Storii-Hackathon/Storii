@@ -25,8 +25,9 @@ const Navbar = ({ isLoggedIn, onSignOut }) => {
 
 <Link to="/generate-book-2" className="text-lg text-black hover:text-gray-600 no-underline transition duration-300">Generate Book 2</Link>
 
-
+{isLoggedIn && <Link to="/subscriptions"  className="text-lg text-black hover:text-gray-600 no-underline transition duration-300">Subscription Page</Link>}
 </div>
+
 
 
 {!isLoggedIn ? (
